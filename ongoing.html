@@ -20,16 +20,19 @@
     </nav>
   </header>
 
-  <main class="page" id="home">
-    <section class="hero">
-      <div>
-        <h1>Learn, read, and write exams online</h1>
-        <p>Welcome to EduText Hub: textbooks, lessons, quizzes, and safe student accounts for primary, secondary, tertiary, and polytechnic learners.</p>
-      </div>
-      <div class="hero-actions">
-        <button class="primary-btn" data-page="books">Explore Books</button>
-        <button class="secondary-btn" data-page="account">Create Account</button>
-      </div>
+  <div class="page-container">
+    <main class="page" id="home">
+      <section class="hero">
+        <div>
+          <h1>Learn, read, and write exams online</h1>
+          <p>Welcome to EduText Hub: textbooks, lessons, quizzes, and safe student accounts for primary, secondary, tertiary, and polytechnic learners.</p>
+        </div>
+        <div class="hero-actions">
+          <button class="primary-btn" data-page="books">Explore Books</button>
+          <button class="secondary-btn" data-page="account">Create Account</button>
+        </div>
+      </section>
+
       <div id="server-warning" class="server-warning hidden">
         <strong>Notice:</strong> The site needs the backend server running to load books and exams. Start the app with <code>node server.js</code> and open it at <code>http://localhost:3000/</code>.
         <div class="server-warning-actions">
@@ -42,86 +45,104 @@
           <p>Or double-click the downloaded <code>run-server.bat</code> file.</p>
         </div>
       </div>
-    </section>
 
-    <section class="features">
-      <article>
-        <h2>Textbooks</h2>
-        <p>Browse study materials for each level, from primary readers to tertiary guides.</p>
-      </article>
-      <article>
-        <h2>Interactive Exams</h2>
-        <p>Take quizzes and tests that reinforce learning and track progress.</p>
-      </article>
-      <article>
-        <h2>Secure Accounts</h2>
-        <p>Create an account, login, and save your activities securely behind the scenes.</p>
-      </article>
-    </section>
-  </main>
+      <section class="features">
+        <article>
+          <h2>Textbooks</h2>
+          <p>Browse study materials for each level, from primary readers to tertiary guides.</p>
+        </article>
+        <article>
+          <h2>Interactive Exams</h2>
+          <p>Take quizzes and tests that reinforce learning and track progress.</p>
+        </article>
+        <article>
+          <h2>Secure Accounts</h2>
+          <p>Create an account, login, and save your activities securely behind the scenes.</p>
+        </article>
+      </section>
+    </main>
 
-  <main class="page hidden" id="levels">
-    <section>
-      <h2>Choose a learning pathway</h2>
-      <div class="grid-cards">
-        <div class="card" data-level="primary">
-          <h3>Primary School</h3>
-          <p>Core skills and easy textbooks for young learners.</p>
+    <main class="page hidden" id="levels">
+      <section>
+        <h2>Choose a learning pathway</h2>
+        <div class="grid-cards">
+          <div class="card" data-level="primary">
+            <h3>Primary School</h3>
+            <p>Core skills and easy textbooks for young learners.</p>
+          </div>
+          <div class="card" data-level="secondary">
+            <h3>Secondary School</h3>
+            <p>Subjects and revision materials for junior and senior secondary.</p>
+          </div>
+          <div class="card" data-level="tertiary">
+            <h3>Tertiary</h3>
+            <p>University-level guides, lectures, and exam rehearsals.</p>
+          </div>
+          <div class="card" data-level="polytechnic">
+            <h3>Polytechnic</h3>
+            <p>Practical technical and vocational resources for polytechnic students.</p>
+          </div>
         </div>
-        <div class="card" data-level="secondary">
-          <h3>Secondary School</h3>
-          <p>Subjects and revision materials for junior and senior secondary.</p>
-        </div>
-        <div class="card" data-level="tertiary">
-          <h3>Tertiary</h3>
-          <p>University-level guides, lectures, and exam rehearsals.</p>
-        </div>
-        <div class="card" data-level="polytechnic">
-          <h3>Polytechnic</h3>
-          <p>Practical technical and vocational resources for polytechnic students.</p>
-        </div>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
 
-  <main class="page hidden" id="books">
-    <section>
-      <h2>Available Textbooks</h2>
-      <div class="selectors">
-        <label>Level:</label>
-        <select id="book-level-select">
-          <option value="primary">Primary</option>
-          <option value="secondary">Secondary</option>
-          <option value="tertiary">Tertiary</option>
-          <option value="polytechnic">Polytechnic</option>
-        </select>
-      </div>
-      <div class="add-book-panel">
-        <h3>Add a new textbook</h3>
-        <form id="book-add-form">
-          <label>Title</label>
-          <input type="text" id="book-title" required />
-          <label>Author</label>
-          <input type="text" id="book-author" required />
-          <label>Description</label>
-          <textarea id="book-description" rows="3" required></textarea>
-          <label>Price</label>
-          <input type="text" id="book-price" required placeholder="₦..." />
-          <label>Level</label>
-          <select id="book-level-input">
+    <main class="page hidden" id="books">
+      <section>
+        <h2>Available Textbooks</h2>
+        <div class="selectors">
+          <label>Level:</label>
+          <select id="book-level-select">
             <option value="primary">Primary</option>
             <option value="secondary">Secondary</option>
             <option value="tertiary">Tertiary</option>
             <option value="polytechnic">Polytechnic</option>
           </select>
-          <label>Content</label>
-          <textarea id="book-content" rows="5" required placeholder="Enter textbook chapters separated by blank lines."></textarea>
+        </div>
+      </section>
+
+      <section class="add-book-panel">
+        <h3>Add a new textbook</h3>
+        <form id="book-add-form">
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" id="book-title" required />
+          </div>
+          <div class="form-group">
+            <label>Author</label>
+            <input type="text" id="book-author" required />
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea id="book-description" rows="3" required></textarea>
+          </div>
+          <div class="form-group">
+            <label>Price</label>
+            <input type="text" id="book-price" required placeholder="₦..." />
+          </div>
+          <div class="form-group">
+            <label>Level</label>
+            <select id="book-level-input">
+              <option value="primary">Primary</option>
+              <option value="secondary">Secondary</option>
+              <option value="tertiary">Tertiary</option>
+              <option value="polytechnic">Polytechnic</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Content</label>
+            <textarea id="book-content" rows="5" required placeholder="Enter textbook chapters separated by blank lines."></textarea>
+          </div>
           <button type="submit" class="primary-btn">Submit Book</button>
           <p id="book-add-message" class="message"></p>
         </form>
-      </div>
-      <div id="book-list" class="grid-cards"></div>
-      <div id="book-detail-section" class="book-detail hidden">
+      </section>
+
+      <section>
+        <h2>Books</h2>
+        <div id="book-list" class="grid-cards"></div>
+      </section>
+
+      <section id="book-detail-section" class="book-detail hidden">
         <button id="close-book-detail" class="secondary-btn">Close</button>
         <h3 id="book-detail-title"></h3>
         <p id="book-detail-author"></p>
@@ -131,82 +152,92 @@
           <span id="book-detail-page"></span>
           <button id="next-page" class="secondary-btn">Next</button>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
 
-  <main class="page hidden" id="cart">
-    <section>
-      <h2>Your Cart</h2>
-      <div id="cart-items" class="grid-cards"></div>
-      <div class="checkout-panel">
-        <p id="cart-total">Total: ₦0</p>
-        <button id="checkout-btn" class="primary-btn">Checkout</button>
-        <p id="cart-message" class="message"></p>
-      </div>
-    </section>
-  </main>
+    <main class="page hidden" id="cart">
+      <section>
+        <h2>Your Cart</h2>
+        <div id="cart-items" class="grid-cards"></div>
+        <div class="checkout-panel">
+          <p id="cart-total">Total: ₦0</p>
+          <button id="checkout-btn" class="primary-btn">Checkout</button>
+          <p id="cart-message" class="message"></p>
+        </div>
+      </section>
+    </main>
 
-  <main class="page hidden" id="orders">
-    <section>
-      <h2>My Orders</h2>
-      <p class="hint">Your purchase receipts are stored here once you complete checkout.</p>
-      <div id="orders-list" class="grid-cards"></div>
-    </section>
-  </main>
+    <main class="page hidden" id="orders">
+      <section>
+        <h2>My Orders</h2>
+        <p class="hint">Your purchase receipts are stored here once you complete checkout.</p>
+        <div id="orders-list" class="grid-cards"></div>
+      </section>
+    </main>
 
-  <main class="page hidden" id="exams">
-    <section>
-      <h2>Exam Practice</h2>
-      <div class="selectors">
-        <label>Level:</label>
-        <select id="exam-level-select">
-          <option value="primary">Primary</option>
-          <option value="secondary">Secondary</option>
-          <option value="tertiary">Tertiary</option>
-          <option value="polytechnic">Polytechnic</option>
-        </select>
-      </div>
-      <div id="exam-list" class="grid-cards"></div>
-    </section>
-  </main>
+    <main class="page hidden" id="exams">
+      <section>
+        <h2>Exam Practice</h2>
+        <div class="selectors">
+          <label>Level:</label>
+          <select id="exam-level-select">
+            <option value="primary">Primary</option>
+            <option value="secondary">Secondary</option>
+            <option value="tertiary">Tertiary</option>
+            <option value="polytechnic">Polytechnic</option>
+          </select>
+        </div>
+        <div id="exam-list" class="grid-cards"></div>
+      </section>
+    </main>
 
-  <main class="page hidden" id="account">
-    <section class="auth-grid">
-      <div class="auth-panel">
-        <h2>Login</h2>
-        <form id="login-form">
-          <label>Email</label>
-          <input type="email" id="login-email" required />
-          <label>Password</label>
-          <input type="password" id="login-password" required />
-          <button type="submit" class="primary-btn">Login</button>
-          <p id="login-message" class="message"></p>
-        </form>
-      </div>
-      <div class="auth-panel">
-        <h2>Create Account</h2>
-        <form id="register-form">
-          <label>Name</label>
-          <input type="text" id="register-name" required />
-          <label>Email</label>
-          <input type="email" id="register-email" required />
-          <label>Password</label>
-          <input type="password" id="register-password" required />
-          <button type="submit" class="secondary-btn">Create Account</button>
-          <p id="register-message" class="message"></p>
-        </form>
-      </div>
-    </section>
+    <main class="page hidden" id="account">
+      <section class="auth-grid">
+        <div class="auth-panel">
+          <h2>Login</h2>
+          <form id="login-form">
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" id="login-email" required />
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" id="login-password" required />
+            </div>
+            <button type="submit" class="primary-btn">Login</button>
+            <p id="login-message" class="message"></p>
+          </form>
+        </div>
+        <div class="auth-panel">
+          <h2>Create Account</h2>
+          <form id="register-form">
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" id="register-name" required />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" id="register-email" required />
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" id="register-password" required />
+            </div>
+            <button type="submit" class="secondary-btn">Create Account</button>
+            <p id="register-message" class="message"></p>
+          </form>
+        </div>
+      </section>
 
-    <section class="dashboard hidden" id="dashboard-section">
-      <h2>Welcome back, <span id="user-name"></span></h2>
-      <p>Your account is ready. Use the books and exams sections to continue learning.</p>
-      <button id="logout-btn" class="secondary-btn">Logout</button>
-      <h3>Recent Activity</h3>
-      <ul id="activity-list" class="activity-list"></ul>
-    </section>
-  </main>
+      <section class="dashboard hidden" id="dashboard-section">
+        <h2>Welcome back, <span id="user-name"></span></h2>
+        <p>Your account is ready. Use the books and exams sections to continue learning.</p>
+        <button id="logout-btn" class="secondary-btn">Logout</button>
+        <h3>Recent Activity</h3>
+        <ul id="activity-list" class="activity-list"></ul>
+      </section>
+    </main>
+  </div>
 
   <footer>
     <p>EduText Hub &copy; 2026 | Learning resources for every level</p>
