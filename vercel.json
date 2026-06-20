@@ -2,18 +2,25 @@
   "version": 2,
   "builds": [
     {
-      "src": "server.js",
+      "src": "api/index.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "ongoing.html",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
+      "src": "/api/(.*)",
+      "dest": "api/index.js"
+    },
+    {
       "src": "/(.*)",
-      "dest": "server.js"
+      "dest": "ongoing.html"
     }
   ],
   "env": {
-    "PORT": "3000",
     "NODE_ENV": "production"
   }
 }
