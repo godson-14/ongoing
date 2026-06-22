@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChiTech Exam Practice</title>
+    <link rel="stylesheet" href="Design.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="brand">
+            <h1>ChiTech Exam Practice</h1>
+            <p>Prepare for JAMB, WAEC, and NECO with past questions from 2014 to 2025.</p>
+        </div>
+        <nav class="top-nav">
+            <a href="../ongoing.html">Back to EduText Hub</a>
+            <a href="#login-section">Home</a>
+            <a href="#exam-panel">Past Questions</a>
+            <a href="About us.html">About Us</a>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <section id="hero" class="hero-card">
+            <h2>Login, pick your exam, subject, and year</h2>
+            <p>Students can practice science and arts subjects and receive a score for every subject taken. Use the login form below to start.</p>
+        </section>
+
+        <section id="login-section" class="card login-card">
+            <h2>Student Login</h2>
+            <form id="login-form" onsubmit="handleLogin(event)">
+                <label for="username">Username</label>
+                <input id="username" type="text" placeholder="Enter username" required>
+
+                <label for="password">Password</label>
+                <input id="password" type="password" placeholder="Enter password" required>
+
+                <button type="submit">Login</button>
+                <p class="hint">Demo login: <strong>student1</strong> / <strong>pass123</strong></p>
+                <p class="hint">New here? <a href="#" id="show-signup" onclick="toggleSignup(true); return false;" class="link-button">Create Account</a></p>
+                <p id="login-error" class="form-error hidden"></p>
+            </form>
+
+            <div id="signup-card" class="signup-card hidden">
+                <h3>Create Account</h3>
+                <form id="signup-form" onsubmit="handleCreateAccount(event)">
+                    <label for="new-fullname">Full Name</label>
+                    <input id="new-fullname" type="text" placeholder="Enter your full name" required>
+
+                    <label for="new-username">Username</label>
+                    <input id="new-username" type="text" placeholder="Choose a username" required>
+
+                    <label for="new-password">Password</label>
+                    <input id="new-password" type="password" placeholder="Choose a password" required>
+
+                    <label for="confirm-password">Confirm Password</label>
+                    <input id="confirm-password" type="password" placeholder="Confirm password" required>
+
+                    <button type="submit">Create Account</button>
+                    <p class="hint">Already have an account? <a href="#" id="show-login" onclick="toggleSignup(false); return false;" class="link-button">Login here</a></p>
+                    <p id="signup-error" class="form-error hidden"></p>
+                    <p id="signup-success" class="success-message hidden"></p>
+                </form>
+            </div>
+        </section>
+
+        <section id="exam-panel" class="card hidden">
+            <h2>Exam Practice Dashboard</h2>
+            <div class="lesson-summary">
+                <p id="welcome-text">Welcome back, <span id="student-name"></span>. Choose an exam and subject to continue.</p>
+            </div>
+
+            <div class="selectors">
+                <div class="select-group">
+                    <label for="exam-select">Exam</label>
+                    <select id="exam-select">
+                        <option value="JAMB">JAMB</option>
+                        <option value="WAEC">WAEC</option>
+                        <option value="NECO">NECO</option>
+                    </select>
+                </div>
+
+                <div class="select-group">
+                    <label for="category-select">Subject Category</label>
+                    <select id="category-select">
+                        <option value="Science">Science</option>
+                        <option value="Arts">Arts</option>
+                    </select>
+                </div>
+
+                <div class="select-group">
+                    <label for="subject-select">Subject</label>
+                    <select id="subject-select"></select>
+                </div>
+
+                <div class="select-group">
+                    <label for="year-select">Year</label>
+                    <select id="year-select"></select>
+                </div>
+            </div>
+
+            <div class="timer-controls">
+                <div class="select-group timer-select-group">
+                    <label for="timer-select">Timer</label>
+                    <select id="timer-select">
+                        <option value="15">15 minutes</option>
+                        <option value="20">20 minutes</option>
+                        <option value="30">30 minutes</option>
+                        <option value="45">45 minutes</option>
+                        <option value="60">60 minutes</option>
+                    </select>
+                </div>
+                <div class="timer-display">
+                    <p>Time Remaining: <span id="time-display">00:00</span></p>
+                </div>
+            </div>
+            <div class="buttons">
+                <button id="load-questions" type="button">Load Past Questions</button>
+                <button id="clear-score" type="button" class="secondary">Clear Score</button>
+            </div>
+
+            <div id="question-panel" class="question-panel hidden">
+                <h3 id="quiz-title">Past Question Set</h3>
+                <form id="quiz-form"></form>
+                <button id="submit-answers" type="button">Submit Answers</button>
+            </div>
+
+            <div id="result-panel" class="result-panel hidden">
+                <h3>Score Report</h3>
+                <p id="score-text"></p>
+                <div id="result-details"></div>
+            </div>
+        </section>
+
+        <section id="league-panel" class="card league-card hidden">
+            <h2>League Table</h2>
+            <p id="current-rank" class="hint"></p>
+            <div class="league-summary">
+                <button id="refresh-league" type="button">Refresh League Table</button>
+            </div>
+            <div class="table-wrap">
+                <table id="league-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            <th>Exam</th>
+                            <th>Avg Score</th>
+                            <th>Best</th>
+                            <th>Attempts</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="card subjects-card">
+            <h2>Included Subjects</h2>
+            <div class="subject-lists">
+                <div>
+                    <h3>Science Subjects</h3>
+                    <ul>
+                        <li>Mathematics</li>
+                        <li>Physics</li>
+                        <li>Chemistry</li>
+                        <li>Biology</li>
+                        <li>Further Mathematics</li>
+                        <li>Computer Science</li>
+                        <li>Agricultural Science</li>
+                        <li>Animal Husbandry</li>
+                        <li>Basic Electricity</li>
+                        <li>Technical Drawing</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Art Subjects</h3>
+                    <ul>
+                        <li>English Language</li>
+                        <li>Literature in English</li>
+                        <li>Government</li>
+                        <li>History</li>
+                        <li>Geography</li>
+                        <li>Economics</li>
+                        <li>Commerce</li>
+                        <li>Christian Religious Studies</li>
+                        <li>Islamic Religious Studies</li>
+                        <li>Civic Education</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="note">Every exam contains past questions from 2014 to 2025. Select the year, exam and subject to practice a tailored subject quiz and see your score at the end.</p>
+        </section>
+    </main>
+
+    <footer>&copy; 2026 CHI TECH Unlimited | Practice JAMB, WAEC, NECO with scores</footer>
+    <script src="app.js"></script>
+</body>
+</html>
